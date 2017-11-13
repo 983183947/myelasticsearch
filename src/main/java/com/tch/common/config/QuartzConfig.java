@@ -19,7 +19,7 @@ public class QuartzConfig {
     @Bean
     public Trigger createIndexJobTrigger() {
         SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .withIntervalInSeconds(2000000).repeatForever();
+                .withIntervalInSeconds(2000).repeatForever();
 
         return TriggerBuilder.newTrigger().forJob(createIndexJobDetail())
                 .withIdentity("createIndexTrigger").withSchedule(scheduleBuilder).build();

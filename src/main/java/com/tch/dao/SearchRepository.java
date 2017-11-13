@@ -13,6 +13,6 @@ import java.util.List;
  * Time: 13:33
  */
 public interface SearchRepository extends JpaRepository<TElSearchEntity,Long>,JpaSpecificationExecutor<TElSearchEntity> {
-    List<TElSearchEntity> getTElSearchEntitiesBySqlFinishAndSStop(String sqlFinish,String sstop);
+    List<TElSearchEntity> findAllBySqlFinishAndSStop(String sqlFinish,String sStop);
 
 }

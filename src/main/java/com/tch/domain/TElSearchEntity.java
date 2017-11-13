@@ -11,27 +11,94 @@ import java.util.Date;
 @Entity
 @Table(name = "T_EL_SEARCH", schema = "TC_TOOLS")
 public class TElSearchEntity {
-    private long oId; 
+    /**
+     * 对象编号
+     */
+    private long oId;
+    /**
+     * 对象名称
+     */
     private String oName;
+    /**
+     * 对象类型(数据库/其他)选择其他时,只是进行注册,其他在他处生成
+     */
     private String sObjType;
+    /**
+     * 所属用户
+     */
     private String tOwner;
+    /**
+     * 表名
+     */
     private String tName;
+    /**
+     * 描述字段
+     */
     private String sdes;
+    /**
+     * 记录数
+     */
     private Long allCnt = 0L;
+    /**
+     * 最后次更新时间
+     */
     private Date cntTime;
+    /**
+     * 上次记录数
+     */
     private Long allLast = 0L;
+    /**
+     * 上次更新时间
+     */
     private Date lastTime;
+    /**
+     * 登记时间
+     */
     private Date dindate = new Date();
+    /**
+     * 下次更新时间
+     */
     private Date dupdate;
+    /**
+     * 增量控制字段
+     */
     private String szlField;
+    /**
+     * 增量值
+     */
     private String szlValue;
+    /**
+     * 增量模式（一次全量/再次全量/增量/每次全量/其他人工控制）
+     */
     private String szlMode;
+    /**
+     * 停止标志(启动/停止)
+     */
     private String tybz = "启动";
+    /**
+     * 0未完成，1完成
+     */
     private String sqlFinish = "0";
+    /**
+     * 服务注册位置(T_LU_SERVER_MAC_REG的编号)
+     */
     private String serverMacId;
+    /**
+     * 索引目录
+     */
     private String sindexDir;
+    /**
+     * 是否发生需要重构变更(变化了需要重构数据)
+     */
     private String sIschange = "否";
+    /**
+     * 是否暂停使用
+     */
     private String sStop = "否";
+    /**
+     * 执行计划类型(0,没有计划;1,现在;2,一次;3,每小时;4,每天;5,每周;6,每月;7,每月最后一天;8,每月第N天;9,重构)
+     */
+    private int timertype = 0;
     private TElDbEntity tElDbEntity;
 
 
@@ -255,13 +322,25 @@ public class TElSearchEntity {
         this.sStop = sStop;
     }
 
+    @Basic
+    @Column(name = "TIMERTYPE")
+    public Integer getTimertype() {
+        return timertype;
+    }
+
+    public void setTimertype(int timertype) {
+        this.timertype = timertype;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         TElSearchEntity that = (TElSearchEntity) o;
+
         if (oId != that.oId) return false;
+        if (timertype != that.timertype) return false;
         if (oName != null ? !oName.equals(that.oName) : that.oName != null) return false;
         if (sObjType != null ? !sObjType.equals(that.sObjType) : that.sObjType != null) return false;
         if (tOwner != null ? !tOwner.equals(that.tOwner) : that.tOwner != null) return false;
@@ -282,8 +361,7 @@ public class TElSearchEntity {
         if (sindexDir != null ? !sindexDir.equals(that.sindexDir) : that.sindexDir != null) return false;
         if (sIschange != null ? !sIschange.equals(that.sIschange) : that.sIschange != null) return false;
         if (sStop != null ? !sStop.equals(that.sStop) : that.sStop != null) return false;
-
-        return true;
+        return tElDbEntity != null ? tElDbEntity.equals(that.tElDbEntity) : that.tElDbEntity == null;
     }
 
     @Override
@@ -309,6 +387,8 @@ public class TElSearchEntity {
         result = 31 * result + (sindexDir != null ? sindexDir.hashCode() : 0);
         result = 31 * result + (sIschange != null ? sIschange.hashCode() : 0);
         result = 31 * result + (sStop != null ? sStop.hashCode() : 0);
+        result = 31 * result + timertype;
+        result = 31 * result + (tElDbEntity != null ? tElDbEntity.hashCode() : 0);
         return result;
     }
 }

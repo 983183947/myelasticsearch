@@ -13,26 +13,89 @@ import java.util.Set;
 @Entity
 @Table(name = "T_EL_DB", schema = "TC_TOOLS")
 public class TElDbEntity {
+    /**
+     * 对象名称
+     */
     private long nid;
+    /**
+     * 数据库名称
+     */
     private String jdmc;
+    /**
+     * 系统名称
+     */
     private String jdlx;
+    /**
+     * 所属部门
+     */
     private String jdbm;
+    /**
+     * 单位代码
+     */
     private String jddwdm;
+    /**
+     * 单位名称
+     */
     private String jddwmc;
+    /**
+     * 数据库类型oracle/sqlserver/其他
+     */
     private String jdklx;
+    /**
+     * 节点描述
+     */
     private String jdmemo;
+    /**
+     * 数据库IP
+     */
     private String jdkip;
+    /**
+     * 数据库实例
+     */
     private String jdksid;
+    /**
+     * 数据库端口
+     */
     private String jdkport;
+    /**
+     * 数据库用户
+     */
     private String jdkuser;
+    /**
+     * 数据库密码
+     */
     private String jdkpass;
+    /**
+     * 可以直接使用URL
+     */
     private String jdbcUrl;
+    /**
+     * 连接JNDI
+     */
     private String jdjndi;
+    /**
+     * 创建时间
+     */
     private Date jdkcjsj;
+    /**
+     * 创建人
+     */
     private String jdkcjr;
+    /**
+     * 停用日期
+     */
     private Date jdktyrq;
+    /**
+     * 最后修改人
+     */
     private String jdkxgr;
+    /**
+     * 最后修改日期
+     */
     private Date jdkxgrq;
+    /**
+     * 数据链路
+     */
     private String jddbLink;
 
     @Id
