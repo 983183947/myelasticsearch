@@ -8,10 +8,5 @@
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
         <mapping class="com.tch.domain.TElDbEntity"/>
         <mapping class="com.tch.domain.TElSearchEntity"/>
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
-
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>
 </hibernate-configuration>
