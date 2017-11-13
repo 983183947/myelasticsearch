@@ -23,7 +23,7 @@ public class Test {
         druidDataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
         druidDataSource.setUsername("tc_tools");
         druidDataSource.setPassword("c153");
-        //druidDataSource.setDriverClassName("");
+        ///druidDataSource.setDriverClassName("");
         QueryRunner queryRunner =new QueryRunner(druidDataSource);
         List<HashMap> a = (List)queryRunner.query("select * from T_LU_CONFIG t", new MapListHandler());
         System.out.println(a.get(0).get("svalue"));
