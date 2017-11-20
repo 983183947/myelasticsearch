@@ -31,10 +31,9 @@ public class CreateIndex extends QuartzJobBean {
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext){
 
-        List<TElSearchEntity> searchEntities = searchRepository.findAllBySqlFinishAndSStop("1","否 ");
-        System.out.println("暂时没有对象..."+ searchEntities.size());
+        List<TElSearchEntity> searchEntities = searchRepository.findAllBySqlFinishAndSStop("1","否");
         if(CollectionUtils.isEmpty(searchEntities)){
-
+            System.out.println("暂时没有对象...");
             return;
         }
 

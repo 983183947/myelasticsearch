@@ -15,4 +15,7 @@ import java.util.List;
 public interface SearchRepository extends JpaRepository<TElSearchEntity,Long>,JpaSpecificationExecutor<TElSearchEntity> {
     List<TElSearchEntity> findAllBySqlFinishAndSStop(String sqlFinish,String sStop);
 
+    List<TElSearchEntity> findBySqlFinish(String sqlFinish);
+
+    List<TElSearchEntity> findBySStop(String sStop);
 }

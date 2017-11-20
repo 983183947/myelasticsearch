@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "T_EL_DB", schema = "TC_TOOLS")
 public class TElDbEntity {
     /**
-     * 对象名称
+     * 对象id
      */
     private long nid;
     /**
@@ -108,7 +108,6 @@ public class TElDbEntity {
         this.nid = nid;
     }
 
-    @Basic
     @Column(name = "JDMC")
     public String getJdmc() {
         return jdmc;
@@ -118,7 +117,7 @@ public class TElDbEntity {
         this.jdmc = jdmc;
     }
 
-    @Basic
+
     @Column(name = "JDLX")
     public String getJdlx() {
         return jdlx;
@@ -128,7 +127,6 @@ public class TElDbEntity {
         this.jdlx = jdlx;
     }
 
-    @Basic
     @Column(name = "JDBM")
     public String getJdbm() {
         return jdbm;
@@ -138,7 +136,6 @@ public class TElDbEntity {
         this.jdbm = jdbm;
     }
 
-    @Basic
     @Column(name = "JDDWDM")
     public String getJddwdm() {
         return jddwdm;
@@ -148,7 +145,6 @@ public class TElDbEntity {
         this.jddwdm = jddwdm;
     }
 
-    @Basic
     @Column(name = "JDDWMC")
     public String getJddwmc() {
         return jddwmc;
@@ -158,7 +154,6 @@ public class TElDbEntity {
         this.jddwmc = jddwmc;
     }
 
-    @Basic
     @Column(name = "JDKLX")
     public String getJdklx() {
         return jdklx;
@@ -168,7 +163,6 @@ public class TElDbEntity {
         this.jdklx = jdklx;
     }
 
-    @Basic
     @Column(name = "JDMEMO")
     public String getJdmemo() {
         return jdmemo;
@@ -178,7 +172,6 @@ public class TElDbEntity {
         this.jdmemo = jdmemo;
     }
 
-    @Basic
     @Column(name = "JDKIP")
     public String getJdkip() {
         return jdkip;
@@ -188,7 +181,6 @@ public class TElDbEntity {
         this.jdkip = jdkip;
     }
 
-    @Basic
     @Column(name = "JDKSID")
     public String getJdksid() {
         return jdksid;
@@ -198,7 +190,6 @@ public class TElDbEntity {
         this.jdksid = jdksid;
     }
 
-    @Basic
     @Column(name = "JDKPORT")
     public String getJdkport() {
         return jdkport;
@@ -208,7 +199,6 @@ public class TElDbEntity {
         this.jdkport = jdkport;
     }
 
-    @Basic
     @Column(name = "JDKUSER")
     public String getJdkuser() {
         return jdkuser;
@@ -218,7 +208,6 @@ public class TElDbEntity {
         this.jdkuser = jdkuser;
     }
 
-    @Basic
     @Column(name = "JDKPASS")
     public String getJdkpass() {
         return jdkpass;
@@ -228,7 +217,6 @@ public class TElDbEntity {
         this.jdkpass = jdkpass;
     }
 
-    @Basic
     @Column(name = "JDBC_URL")
     public String getJdbcUrl() {
         return jdbcUrl;
@@ -238,7 +226,6 @@ public class TElDbEntity {
         this.jdbcUrl = jdbcUrl;
     }
 
-    @Basic
     @Column(name = "JDJNDI")
     public String getJdjndi() {
         return jdjndi;
@@ -248,7 +235,6 @@ public class TElDbEntity {
         this.jdjndi = jdjndi;
     }
 
-    @Basic
     @Column(name = "JDKCJSJ")
     public Date getJdkcjsj() {
         return jdkcjsj;
@@ -258,7 +244,6 @@ public class TElDbEntity {
         this.jdkcjsj = jdkcjsj;
     }
 
-    @Basic
     @Column(name = "JDKCJR")
     public String getJdkcjr() {
         return jdkcjr;
@@ -268,7 +253,6 @@ public class TElDbEntity {
         this.jdkcjr = jdkcjr;
     }
 
-    @Basic
     @Column(name = "JDKTYRQ")
     public Date getJdktyrq() {
         return jdktyrq;
@@ -278,7 +262,6 @@ public class TElDbEntity {
         this.jdktyrq = jdktyrq;
     }
 
-    @Basic
     @Column(name = "JDKXGR")
     public String getJdkxgr() {
         return jdkxgr;
@@ -288,7 +271,6 @@ public class TElDbEntity {
         this.jdkxgr = jdkxgr;
     }
 
-    @Basic
     @Column(name = "JDKXGRQ")
     public Date getJdkxgrq() {
         return jdkxgrq;
@@ -298,7 +280,6 @@ public class TElDbEntity {
         this.jdkxgrq = jdkxgrq;
     }
 
-    @Basic
     @Column(name = "JDDB_LINK")
     public String getJddbLink() {
         return jddbLink;

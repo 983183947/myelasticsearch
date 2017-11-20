@@ -38,6 +38,7 @@ public class JobIndexservice {
          *查看是否需要建立索引
          */
         boolean needCreatIndex=jobIndexdao.needCreatIndex(searchEntity);
+        //System.out.println("是否需要产生索引"+needCreatIndex);
         if(!needCreatIndex){
             jobIndexdao.setStat("1",searchEntity);
             return new AsyncResult<String>(searchEntity.getoName()+"不需要生成！");
@@ -46,7 +47,16 @@ public class JobIndexservice {
          *生成索引
          */
         QueryRunner queryRunner=jobIndexdao.getQueryRunner(searchEntity);
-        jobIndexdao.creatIndex(queryRunner,searchEntity);
+        if(queryRunner == null){
+            return new AsyncResult<String>(searchEntity.getoName()+"数据库连接异常,索引生成执行完毕");
+        }
+        try{
+            jobIndexdao.creatIndex(queryRunner,searchEntity);
+            searchEntity.setLastTime(new Date());
+            searchRepository.save(searchEntity);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         jobIndexdao.setStat("1",searchEntity);
         return new AsyncResult<String>(searchEntity.getoName()+"索引生成执行完毕");
     }

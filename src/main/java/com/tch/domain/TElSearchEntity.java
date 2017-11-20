@@ -1,7 +1,12 @@
 package com.tch.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author: zzj
@@ -99,8 +104,21 @@ public class TElSearchEntity {
      * 执行计划类型(0,没有计划;1,现在;2,一次;3,每小时;4,每天;5,每周;6,每月;7,每月最后一天;8,每月第N天;9,重构)
      */
     private int timertype = 0;
-    private TElDbEntity tElDbEntity;
 
+
+    @JSONField(serialize =false )
+    private TElDbEntity tElDbEntity;
+    @JSONField(serialize =false )
+    private Set<TElFieldEntity> tElFieldEntities = new HashSet<TElFieldEntity>();
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy ="tElSearchEntity" )
+    public Set<TElFieldEntity> gettElFieldEntities() {
+        return tElFieldEntities;
+    }
+
+    public void settElFieldEntities(Set<TElFieldEntity> tElFieldEntities) {
+        this.tElFieldEntities = tElFieldEntities;
+    }
 
     @Id
     @Column(name = "O_ID")
@@ -121,7 +139,6 @@ public class TElSearchEntity {
         this.tElDbEntity = tElDbEntity;
     }
 
-    @Basic
     @Column(name = "O_NAME")
     public String getoName() {
         return oName;
@@ -131,7 +148,6 @@ public class TElSearchEntity {
         this.oName = oName;
     }
 
-    @Basic
     @Column(name = "S_OBJ_TYPE")
     public String getsObjType() {
         return sObjType;
@@ -142,7 +158,6 @@ public class TElSearchEntity {
     }
 
 
-    @Basic
     @Column(name = "T_OWNER")
     public String gettOwner() {
         return tOwner;
@@ -152,7 +167,6 @@ public class TElSearchEntity {
         this.tOwner = tOwner;
     }
 
-    @Basic
     @Column(name = "T_NAME")
     public String gettName() {
         return tName;
@@ -162,7 +176,6 @@ public class TElSearchEntity {
         this.tName = tName;
     }
 
-    @Basic
     @Column(name = "SDES")
     public String getSdes() {
         return sdes;
@@ -172,7 +185,6 @@ public class TElSearchEntity {
         this.sdes = sdes;
     }
 
-    @Basic
     @Column(name = "ALL_CNT")
     public Long getAllCnt() {
         return allCnt;
@@ -182,7 +194,6 @@ public class TElSearchEntity {
         this.allCnt = allCnt;
     }
 
-    @Basic
     @Column(name = "CNT_TIME")
     public Date getCntTime() {
         return cntTime;
@@ -192,7 +203,6 @@ public class TElSearchEntity {
         this.cntTime = cntTime;
     }
 
-    @Basic
     @Column(name = "ALL_LAST")
     public Long getAllLast() {
         return allLast;
@@ -202,7 +212,6 @@ public class TElSearchEntity {
         this.allLast = allLast;
     }
 
-    @Basic
     @Column(name = "LAST_TIME")
     public Date getLastTime() {
         return lastTime;
@@ -212,7 +221,6 @@ public class TElSearchEntity {
         this.lastTime = lastTime;
     }
 
-    @Basic
     @Column(name = "DINDATE")
     public Date getDindate() {
         return dindate;
@@ -222,7 +230,6 @@ public class TElSearchEntity {
         this.dindate = dindate;
     }
 
-    @Basic
     @Column(name = "DUPDATE")
     public Date getDupdate() {
         return dupdate;
@@ -232,7 +239,6 @@ public class TElSearchEntity {
         this.dupdate = dupdate;
     }
 
-    @Basic
     @Column(name = "SZL_FIELD")
     public String getSzlField() {
         return szlField;
@@ -242,7 +248,6 @@ public class TElSearchEntity {
         this.szlField = szlField;
     }
 
-    @Basic
     @Column(name = "SZL_VALUE")
     public String getSzlValue() {
         return szlValue;
@@ -252,7 +257,6 @@ public class TElSearchEntity {
         this.szlValue = szlValue;
     }
 
-    @Basic
     @Column(name = "SZL_MODE")
     public String getSzlMode() {
         return szlMode;
@@ -262,7 +266,6 @@ public class TElSearchEntity {
         this.szlMode = szlMode;
     }
 
-    @Basic
     @Column(name = "TYBZ")
     public String getTybz() {
         return tybz;
@@ -272,7 +275,6 @@ public class TElSearchEntity {
         this.tybz = tybz;
     }
 
-    @Basic
     @Column(name = "SQL_FINISH")
     public String getSqlFinish() {
         return sqlFinish;
@@ -282,7 +284,6 @@ public class TElSearchEntity {
         this.sqlFinish = sqlFinish;
     }
 
-    @Basic
     @Column(name = "SERVER_MAC_ID")
     public String getServerMacId() {
         return serverMacId;
@@ -292,7 +293,6 @@ public class TElSearchEntity {
         this.serverMacId = serverMacId;
     }
 
-    @Basic
     @Column(name = "SINDEX_DIR")
     public String getSindexDir() {
         return sindexDir;
@@ -302,7 +302,6 @@ public class TElSearchEntity {
         this.sindexDir = sindexDir;
     }
 
-    @Basic
     @Column(name = "S_ISCHANGE")
     public String getsIschange() {
         return sIschange;
@@ -312,7 +311,6 @@ public class TElSearchEntity {
         this.sIschange = sIschange;
     }
 
-    @Basic
     @Column(name = "S_STOP")
     public String getsStop() {
         return sStop;
@@ -322,9 +320,7 @@ public class TElSearchEntity {
         this.sStop = sStop;
     }
 
-    @Basic
-    @Column(name = "TIMERTYPE")
-    public Integer getTimertype() {
+    public int getTimertype() {
         return timertype;
     }
 
@@ -361,7 +357,8 @@ public class TElSearchEntity {
         if (sindexDir != null ? !sindexDir.equals(that.sindexDir) : that.sindexDir != null) return false;
         if (sIschange != null ? !sIschange.equals(that.sIschange) : that.sIschange != null) return false;
         if (sStop != null ? !sStop.equals(that.sStop) : that.sStop != null) return false;
-        return tElDbEntity != null ? tElDbEntity.equals(that.tElDbEntity) : that.tElDbEntity == null;
+        if (tElDbEntity != null ? !tElDbEntity.equals(that.tElDbEntity) : that.tElDbEntity != null) return false;
+        return tElFieldEntities != null ? tElFieldEntities.equals(that.tElFieldEntities) : that.tElFieldEntities == null;
     }
 
     @Override
@@ -389,6 +386,7 @@ public class TElSearchEntity {
         result = 31 * result + (sStop != null ? sStop.hashCode() : 0);
         result = 31 * result + timertype;
         result = 31 * result + (tElDbEntity != null ? tElDbEntity.hashCode() : 0);
+        result = 31 * result + (tElFieldEntities != null ? tElFieldEntities.hashCode() : 0);
         return result;
     }
 }

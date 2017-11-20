@@ -5,6 +5,9 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.print.DocFlavor;
 import java.sql.SQLException;
@@ -17,7 +20,11 @@ import java.util.Map;
  * Date: 2017-09-26
  * Time: 16:53
  */
+
 public class Test {
+    @Autowired
+    ElasticsearchTemplate elasticsearchTemplate;
+
     public static void main(String[] args) throws SQLException {
         DruidDataSource druidDataSource=new DruidDataSource();
         druidDataSource.setUrl("jdbc:oracle:thin:@127.0.0.1:1521:xe");
@@ -27,5 +34,10 @@ public class Test {
         QueryRunner queryRunner =new QueryRunner(druidDataSource);
         List<HashMap> a = (List)queryRunner.query("select * from T_LU_CONFIG t", new MapListHandler());
         System.out.println(a.get(0).get("svalue"));
+    }
+
+    @org.junit.Test
+    public void get(){
+        elasticsearchTemplate.getClient();
     }
 }
